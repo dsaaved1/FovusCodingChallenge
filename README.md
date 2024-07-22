@@ -16,11 +16,11 @@ Use your local terminal to deploy the S3 Uploader. This will create a preSignedU
 
 https://aws.amazon.com/blogs/compute/uploading-to-amazon-s3-directly-from-a-web-or-mobile-application/
 
-2. ** Check Changes in AWS**:
+2. **Check Changes in AWS**:
 
 After deploying with AWS SAM, you will have a new S3 bucket named `s3uploader` along with a Lambda function in your AWS account. You can also create these resources manually, including an IAM role with the necessary permissions.
 
-3**Create and Upload a Zip File for Lambda**
+3. **Create and Upload a Zip File for Lambda**
 The Lambda function in AWS, which is not passed the contents of the uploaded file as specified in the requirements, is initially written in SDK v2. To change it to SDK v3, navigate to the `backend/s3Uploader` directory, which contains the updated code in SDK v3. Create the necessary zip file and upload it to AWS in the Lambda function. t doesn't have to be the same name as the Lambda function.
 
    
