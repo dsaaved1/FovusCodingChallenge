@@ -12,28 +12,31 @@ This README file provides a comprehensive guide on how to deploy and test the pr
 ### 1. Upload S3 files directly from Web
 
 1. **Deploy the S3 Uploader**
-Use your local terminal to deploy the S3 Uploader. This will create a preSignedURL endpoint, allowing you to upload files directly to an S3 bucket. Follow the steps in the guide linked below:
+- Use your local terminal to deploy the S3 Uploader. This will create a preSignedURL endpoint, allowing you to upload files directly to an S3 bucket. Follow the steps in the guide linked below:
 
-https://aws.amazon.com/blogs/compute/uploading-to-amazon-s3-directly-from-a-web-or-mobile-application/
+[AWS Blog: Uploading to Amazon S3 Directly from a Web or Mobile Application](https://aws.amazon.com/blogs/compute/uploading-to-amazon-s3-directly-from-a-web-or-mobile-application/)
 
 2. **Paste API Endpoint to App.js**:
-In `frontend/src/App.js` paste the API endpoint given by the previous step to `API_ENDPOINT`.
+- In `frontend/src/App.js` paste the API endpoint given by the previous step to `API_ENDPOINT`.
 
 3. **Check Changes in AWS**:
 
-After deploying with AWS SAM, you will have a new S3 bucket named `s3uploader` along with a Lambda function in your AWS account. You can also create these resources manually, including an IAM role with the necessary permissions.
+- After deploying with AWS SAM, you will have a new S3 bucket named `s3uploader` along with a Lambda function in your AWS account.
+- You can also create these resources manually, including an IAM role with the necessary permissions.
 
 4. **Create and Upload a Zip File for Lambda**
-The Lambda function in AWS, which is not passed the contents of the uploaded file as specified in the requirements, is initially written in SDK v2. To change it to SDK v3, navigate to the `backend/s3Uploader` directory, which contains the updated code in SDK v3. Create the necessary zip file and upload it to AWS in the Lambda function. t doesn't have to be the same name as the Lambda function.
+- The Lambda function in AWS, which is not passed the contents of the uploaded file as specified in the requirements, is initially written in SDK v2. To change it to SDK v3, navigate to the `backend/s3Uploader` directory, which contains the updated code in SDK v3.
+- Create the necessary zip file and upload it to AWS in the Lambda function. t doesn't have to be the same name as the Lambda function.
 
    
 ### 2. Save input in DynamoDB Table
 
 1. **Create DynamoDB Table**:
-Create a DynamoDB table and then set up a Lambda function with the appropriate IAM role permissions. Configure an API Gateway as a trigger for this Lambda function. Update the `API_ENDPOINT_TABLE` variable in `frontend/src/App.js` with the API Gateway endpoint.
+- Create a DynamoDB table and then set up a Lambda function with the appropriate IAM role permissions.
+- Configure an API Gateway as a trigger for this Lambda function. Update the `API_SAVE_ENDPOINT` variable in `frontend/src/App.js` with the API Gateway endpoint.
 
 2. **Update SaveUploadDataFunction Lambda Code**
-In the AWS Management Console, locate the Lambda function you created for saving data to DynamoDB. Replace the existing `index.mjs` file with the `index.js` file found in the `backend/saveUploadDataFunction` directory. Ensure the Lambda function has the necessary IAM role permissions to access DynamoDB.
+- In the AWS Management Console, locate the Lambda function you created for saving data to DynamoDB. Replace the existing `index.mjs` file with the `index.js` file found in the `backend/saveUploadDataFunction` directory. 
 
 ### 3. Run Script in a VM Instance
 
@@ -47,7 +50,8 @@ In the AWS Management Console, locate the Lambda function you created for saving
 
 3. **Update the create_new_VM Lambda Code**
 - Update Lambda Function: In the AWS Management Console, locate the Lambda function responsible for launching the EC2 instance. Replace the existing `index.mjs` file with the `index.js` file found in the `backend/createNewVM directory`.
-- Set Environment Variables: Add the following environment variables to the Lambda function configuration in  - AMI
+- Set Environment Variables: Add the following environment variables to the Lambda function configuration:
+  - AMI
   - INSTANCE_TYPE
   - KEY_NAME
   - SUBNET_ID
@@ -91,4 +95,10 @@ In the AWS Management Console, locate the Lambda function you created for saving
     - Confirm that the EC2 instance is launched, processes the file, and uploads the output file to the S3 bucket.
     - Check that the new item with the output file path is added to the DynamoDB table.
 
+
+## Thank You!
+
+Thank you for using this project! If you have any questions or encounter any problems, please feel free to write me an email at [diegoas2@illinois.edu](mailto:diegoas2@illinois.edu).
+
+Diego Saavedra
 
