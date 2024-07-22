@@ -9,7 +9,7 @@ This README file provides a comprehensive guide on how to deploy and test the pr
 
 ## Step-by-Step Guide
 
-### 1. Upload S3 files directly from Web
+### 1. Upload S3 file directly from the Web
 
 1. **Deploy the S3 Uploader**
 - Use your local terminal to deploy the S3 Uploader. This will create a preSignedURL endpoint, allowing you to upload files directly to an S3 bucket. Follow the steps in the guide linked below:
@@ -29,7 +29,7 @@ This README file provides a comprehensive guide on how to deploy and test the pr
 - Create the necessary zip file and upload it to AWS in the Lambda function. t doesn't have to be the same name as the Lambda function.
 
    
-### 2. Save input in DynamoDB Table
+### 2. Save inputs in DynamoDB Table
 
 1. **Create DynamoDB Table**:
 - Create a DynamoDB table and then set up a Lambda function with the appropriate IAM role permissions.
